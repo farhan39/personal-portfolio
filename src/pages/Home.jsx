@@ -1,14 +1,30 @@
+import HeroSection from '../components/home/HeroSection'
+import AboutPreview from '../components/home/AboutPreview'
+import SkillsPreview from '../components/home/SkillsPreview'
+import FeaturedProjects from '../components/home/FeaturedProjects'
+import ContactCTA from '../components/home/ContactCTA'
+
 /**
  * Home Page
- * Placeholder page component
+ * Main landing page with all sections
  */
 const Home = () => {
   return (
-    <div className="space-y-6">
-      <div className="text-center py-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Welcome</h2>
-        <p className="text-gray-600">This is the home page placeholder.</p>
-      </div>
+    <div className="w-full">
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* About Preview Section */}
+      <AboutPreview />
+
+      {/* Skills Preview Section */}
+      <SkillsPreview />
+
+      {/* Featured Projects Section */}
+      <FeaturedProjects />
+
+      {/* Contact CTA Footer Strip */}
+      <ContactCTA />
     </div>
   )
 }
