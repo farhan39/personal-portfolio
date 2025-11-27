@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
 
     // Set page title based on route (can be enhanced with route config)
     const routeTitles = {
-      '/': 'Home',
+      '/': '',
       '/about': 'About',
       '/projects': 'Projects',
       '/contact': 'Contact',
