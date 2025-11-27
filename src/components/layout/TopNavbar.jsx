@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useLayoutStore } from '../../stores/useLayoutStore'
+import { getNavigationLinks, portfolioData } from '../../data/portfolioData'
 import MobileDrawer from './MobileDrawer'
 
 /**
@@ -13,15 +14,9 @@ const TopNavbar = () => {
   const { isScrolled, setIsScrolled } = useLayoutStore()
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false)
 
-  // Navigation items - including optional Blog
-  const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/about', label: 'About' },
-    { path: '/contact', label: 'Contact' },
-    // Optional Blog - uncomment if needed
-    // { path: '/blog', label: 'Blog' },
-  ]
+  // Navigation items from centralized data
+  const navItems = getNavigationLinks()
+  const logo = portfolioData.navigation.logo
 
   // Sticky-on-scroll behavior
   useEffect(() => {
@@ -94,18 +89,26 @@ const TopNavbar = () => {
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center space-x-2 sm:space-x-3"
               >
-                {/* Logo placeholder - replace with actual logo image if available */}
-                <div 
-                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-md group-hover:shadow-lg transition-shadow"
-                  style={{
-                    background: 'linear-gradient(135deg, #FF71CE 0%, #B967FF 50%, #01CDFE 100%)',
-                    boxShadow: '0 4px 6px -1px rgba(185, 103, 255, 0.35)',
-                  }}
-                >
-                  P
-                </div>
+                {/* Logo */}
+                {logo.icon ? (
+                  <img
+                    src={logo.icon}
+                    alt={logo.text}
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+                  />
+                ) : (
+                  <div 
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-md group-hover:shadow-lg transition-shadow"
+                    style={{
+                      background: 'linear-gradient(135deg, #FF71CE 0%, #B967FF 50%, #01CDFE 100%)',
+                      boxShadow: '0 4px 6px -1px rgba(185, 103, 255, 0.35)',
+                    }}
+                  >
+                    {logo.text.charAt(0)}
+                  </div>
+                )}
                 <span className="text-lg sm:text-xl md:text-2xl font-bold text-[#1A1A1A] group-hover:opacity-80 transition-opacity font-heading">
-                  Portfolio
+                  {logo.text}
                 </span>
               </motion.div>
             </Link>

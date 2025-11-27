@@ -7,6 +7,7 @@ import ProjectDescription from '../components/projects/ProjectDescription'
 import FeatureList from '../components/projects/FeatureList'
 import ProjectLinks from '../components/projects/ProjectLinks'
 import ProjectNavigation from '../components/projects/ProjectNavigation'
+import { getAllProjects, getProjectById } from '../data/portfolioData'
 
 /**
  * ProjectDetails Page
@@ -16,94 +17,12 @@ const ProjectDetails = () => {
   const { id } = useParams()
   const navigate = useNavigate()
 
-  // Mock projects data - Replace with actual data fetching
-  const allProjects = useMemo(() => [
-    {
-      id: '1',
-      title: 'E-Commerce Platform',
-      subtitle: 'A modern e-commerce solution',
-      date: 'January 2024',
-      role: 'Full-Stack Developer',
-      techStack: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      description: 'A comprehensive e-commerce platform built with modern web technologies. This project features a complete shopping experience with user authentication, product management, shopping cart, payment integration, and an admin dashboard for managing orders and inventory.',
-      features: [
-        'User authentication and authorization',
-        'Product catalog with search and filters',
-        'Shopping cart and checkout process',
-        'Payment integration with Stripe',
-        'Admin dashboard for order management',
-        'Real-time inventory tracking',
-        'Order history and tracking',
-        'Email notifications',
-      ],
-      screenshots: [
-        '/screenshots/ecommerce-1.jpg',
-        '/screenshots/ecommerce-2.jpg',
-        '/screenshots/ecommerce-3.jpg',
-      ],
-      videoId: 'dQw4w9WgXcQ', // Replace with actual video ID
-      githubUrl: 'https://github.com/username/ecommerce-platform',
-      liveUrl: 'https://ecommerce-demo.example.com',
-      tags: ['E-Commerce', 'Full-Stack', 'Payment'],
-      category: 'Web Application',
-      slug: '/projects/ecommerce-platform',
-    },
-    {
-      id: '2',
-      title: 'Mobile Weather App',
-      subtitle: 'Beautiful weather forecasts',
-      date: 'December 2023',
-      role: 'Mobile Developer',
-      techStack: ['React Native', 'TypeScript', 'OpenWeather API'],
-      description: 'A beautiful and intuitive weather application for mobile devices. Features real-time weather forecasts, location-based weather, detailed hourly and daily forecasts, and beautiful animations.',
-      features: [
-        'Real-time weather updates',
-        'Location-based forecasts',
-        'Hourly and daily forecasts',
-        'Beautiful UI animations',
-        'Weather alerts and notifications',
-        'Multiple location support',
-      ],
-      screenshots: [
-        '/screenshots/weather-1.jpg',
-        '/screenshots/weather-2.jpg',
-      ],
-      videoId: null,
-      githubUrl: 'https://github.com/username/weather-app',
-      liveUrl: null,
-      tags: ['Mobile', 'Weather', 'API'],
-      category: 'Mobile Application',
-      slug: '/projects/weather-app',
-    },
-    {
-      id: '3',
-      title: 'Portfolio Website',
-      subtitle: 'Modern portfolio showcase',
-      date: 'November 2023',
-      role: 'Frontend Developer',
-      techStack: ['React', 'Tailwind CSS', 'Framer Motion'],
-      description: 'A modern, responsive portfolio website showcasing my work and skills. Built with React and Tailwind CSS, featuring smooth animations and a clean, professional design.',
-      features: [
-        'Responsive design',
-        'Smooth animations',
-        'Project showcase',
-        'Contact form',
-        'Dark mode support',
-        'SEO optimized',
-      ],
-      screenshots: [],
-      videoId: null,
-      githubUrl: 'https://github.com/username/portfolio',
-      liveUrl: 'https://portfolio.example.com',
-      tags: ['Portfolio', 'Design', 'Responsive'],
-      category: 'Web Application',
-      slug: '/projects/portfolio',
-    },
-  ], [])
+  // Get projects from centralized data
+  const allProjects = getAllProjects()
 
   // Find current project
   const project = useMemo(() => {
-    return allProjects.find((p) => p.id === id || p.slug === `/projects/${id}`)
+    return getProjectById(id) || allProjects.find((p) => p.slug === `/projects/${id}`)
   }, [id, allProjects])
 
   // Find previous and next projects
