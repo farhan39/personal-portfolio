@@ -1,1 +1,57 @@
 @import "tailwindcss";
+
+/* Pastel Cyberpunk Light Mode Theme - CSS Variables for Tailwind Arbitrary Values */
+
+:root {
+  /* Primary Colors (Pink Neon) */
+  --primary: #FF71CE;
+  --primary-light: #FF9DE2;
+  --primary-dark: #E85DB8;
+  --primary-50: #FFF0FA;
+  --primary-100: #FFE0F5;
+  --primary-200: #FFC8EE;
+
+  /* Secondary Colors (Cyan Electric) */
+  --secondary: #01CDFE;
+  --secondary-light: #66E4FF;
+  --secondary-dark: #009ABB;
+
+  /* Accent Colors (Purple) */
+  --accent: #B967FF;
+  --accent-soft: #E3C8FF;
+  --accent-dark: #8F3FD1;
+
+  /* Background Colors */
+  --cyber-white: #FDF7FF;
+  --soft-pink-mist: #FFF0FB;
+  --soft-cyan-haze: #F2FDFF;
+
+  /* Text Colors */
+  --text-primary: #1A1A1A;
+  --text-secondary: #5A5A5A;
+
+  /* Border Colors */
+  --border: #EADFF2;
+}
+
+/* Global Base Styles */
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--cyber-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

@@ -51,7 +51,7 @@ const Layout = ({ children }) => {
   }, [location.pathname, setCurrentPage, setPageTitle, setBreadcrumbs])
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#FDF7FF]">
       <TopNavbar />
       <StickyHeader />
       <MainContent>

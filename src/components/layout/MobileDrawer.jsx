@@ -99,7 +99,7 @@ const MobileDrawer = ({ isOpen, onClose, navItems }) => {
             exit="closed"
             variants={backdropVariants}
             onClick={onClose}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 md:hidden"
+            className="fixed inset-0 bg-[#1A1A1A]/50 backdrop-blur-sm z-50 md:hidden"
             aria-hidden="true"
           />
 
@@ -109,18 +109,21 @@ const MobileDrawer = ({ isOpen, onClose, navItems }) => {
             animate="open"
             exit="closed"
             variants={drawerVariants}
-            className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl z-50 md:hidden"
+            className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-[#FDF7FF] shadow-2xl z-50 md:hidden"
+            style={{
+              boxShadow: '0 10px 15px -3px rgba(185, 103, 255, 0.25)',
+            }}
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
           >
             <div className="flex flex-col h-full">
               {/* Drawer Header */}
-              <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                <h2 className="text-xl font-bold text-gray-900">Menu</h2>
+              <div className="flex items-center justify-between p-6 border-b border-[#EADFF2]">
+                <h2 className="text-xl font-bold text-[#1A1A1A] font-heading">Menu</h2>
                 <button
                   onClick={onClose}
-                  className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+                  className="p-2 rounded-lg text-[#5A5A5A] hover:bg-[#FFF0FB] transition-colors focus:outline-none focus:ring-2 focus:ring-[#B967FF] focus:ring-offset-2"
                   aria-label="Close menu"
                 >
                   <svg
@@ -151,11 +154,19 @@ const MobileDrawer = ({ isOpen, onClose, navItems }) => {
                       <Link
                         to={item.path}
                         onClick={onClose}
-                        className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 ${
+                        className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#B967FF] focus:ring-offset-2 ${
                           isActive(item.path)
-                            ? 'bg-gray-900 text-white shadow-md'
-                            : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                            ? 'text-white shadow-md'
+                            : 'text-[#5A5A5A] hover:text-[#1A1A1A] hover:bg-[#FFF0FB]'
                         }`}
+                        style={
+                          isActive(item.path)
+                            ? {
+                                background: 'linear-gradient(135deg, #FF71CE 0%, #B967FF 50%, #01CDFE 100%)',
+                                boxShadow: '0 4px 6px -1px rgba(185, 103, 255, 0.35)',
+                              }
+                            : {}
+                        }
                         aria-current={isActive(item.path) ? 'page' : undefined}
                       >
                         {item.label}
