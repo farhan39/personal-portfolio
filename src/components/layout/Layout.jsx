@@ -23,6 +23,13 @@ const Layout = ({ children }) => {
     const path = location.pathname
     setCurrentPage(path)
 
+    // Reset scroll position on route change
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto',
+    })
+
     // Set page title based on route (can be enhanced with route config)
     const routeTitles = {
       '/': '',

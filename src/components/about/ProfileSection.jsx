@@ -18,8 +18,9 @@ const ProfileSection = ({
       transition={{ duration: 0.4 }}
       className={`w-full py-12 md:py-16 lg:py-20 ${className}`}
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-start">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="border-2 border-dotted border-[#EADFF2] rounded-3xl bg-white/60 backdrop-blur-sm p-6 sm:p-8 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-24 lg:gap-32 items-start">
           {/* Profile Photo */}
           <div className="md:col-span-1 flex justify-center md:justify-start">
             <motion.div
@@ -28,7 +29,7 @@ const ProfileSection = ({
               transition={{ duration: 0.4, delay: 0.2 }}
               className="relative"
             >
-              <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-4 border-[#EADFF2] shadow-lg bg-gradient-to-br from-[#FFF0FB] to-[#F2FDFF]">
+              <div className="w-48 h-48 md:w-72 md:h-72 rounded-2xl overflow-hidden border-4 border-[#EADFF2] shadow-lg bg-gradient-to-br from-[#FFF0FB] to-[#F2FDFF]">
                 {photo ? (
                   <img
                     src={photo}
@@ -93,6 +94,7 @@ const ProfileSection = ({
                 </p>
               )}
             </div>
+          </div>
           </div>
         </div>
       </div>

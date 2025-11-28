@@ -89,7 +89,7 @@ const TopNavbar = () => {
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center space-x-2 sm:space-x-3"
               >
-                {/* Logo */}
+                {/* Logo
                 {logo.icon ? (
                   <img
                     src={logo.icon}
@@ -106,7 +106,7 @@ const TopNavbar = () => {
                   >
                     {logo.text.charAt(0)}
                   </div>
-                )}
+                )} */}
                 <span className="text-lg sm:text-xl md:text-2xl font-bold text-[#1A1A1A] group-hover:opacity-80 transition-opacity font-heading">
                   {logo.text}
                 </span>
@@ -136,7 +136,7 @@ const TopNavbar = () => {
                     {isActive(item.path) && (
                       <motion.div
                         layoutId="activeIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
+                        className="absolute bottom-0.5 w-12 left-1/2 -translate-x-1/2 h-0.5 rounded-full"
                         style={{
                           background: 'linear-gradient(135deg, #FF71CE 0%, #B967FF 50%, #01CDFE 100%)',
                         }}

@@ -56,7 +56,7 @@ const SocialLinks = ({
       transition={{ duration: 0.4 }}
       className={`w-full ${className}`}
     >
-      <div className="bg-[#FDF7FF] border-2 border-[#EADFF2] rounded-2xl p-6 md:p-8 lg:p-10">
+      <div className="bg-[#FDF7FF] border-2 border-dotted border-[#EADFF2] rounded-2xl p-6 md:p-8 lg:p-10">
         <h2 className="text-2xl md:text-3xl font-bold text-[#1A1A1A] font-heading mb-6">
           Connect With Me
         </h2>

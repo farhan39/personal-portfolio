@@ -56,7 +56,7 @@ const ExperienceTimeline = ({
 
                 {/* Content Card */}
                 <div
-                  className={`flex-1 bg-[#FDF7FF] border-2 border-[#EADFF2] rounded-xl p-6 md:p-8 hover:border-[#B967FF] transition-all duration-300 ${
+                  className={`flex-1 bg-[#FDF7FF] border-2 border-dotted border-[#EADFF2] rounded-xl p-6 md:p-8 hover:border-[#B967FF] transition-all duration-300 ${
                     index % 2 === 0 ? 'md:mr-auto md:max-w-[45%]' : 'md:ml-auto md:max-w-[45%]'
                   }`}
                 >

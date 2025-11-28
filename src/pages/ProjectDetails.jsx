@@ -5,7 +5,6 @@ import ScreenshotGallery from '../components/projects/ScreenshotGallery'
 import YouTubeEmbed from '../components/projects/YouTubeEmbed'
 import ProjectDescription from '../components/projects/ProjectDescription'
 import FeatureList from '../components/projects/FeatureList'
-import ProjectLinks from '../components/projects/ProjectLinks'
 import ProjectNavigation from '../components/projects/ProjectNavigation'
 import { getAllProjects, getProjectById } from '../data/portfolioData'
 
@@ -101,13 +100,6 @@ const ProjectDetails = () => {
 
       {/* Feature List */}
       <FeatureList features={project.features} />
-
-      {/* Project Links */}
-      <ProjectLinks
-        githubUrl={project.githubUrl}
-        liveUrl={project.liveUrl}
-        otherLinks={project.otherLinks}
-      />
 
       {/* Project Navigation */}
       <ProjectNavigation
