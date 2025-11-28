@@ -1,8 +1,9 @@
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import ProjectsPageHeader from '../components/projects/ProjectsPageHeader'
 import ProjectFilters from '../components/projects/ProjectFilters'
 import ProjectsGrid from '../components/projects/ProjectsGrid'
 import { useProjectFilters } from '../hooks/useProjectFilters'
+import { getAllProjects, portfolioData } from '../data/portfolioData'
 
 /**
  * Projects Page
@@ -10,71 +11,10 @@ import { useProjectFilters } from '../hooks/useProjectFilters'
  */
 const Projects = () => {
   const [selectedFilters, setSelectedFilters] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading] = useState(false)
 
-  // Mock projects data - Replace with actual data fetching
-  const allProjects = useMemo(() => [
-    {
-      id: '1',
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with payment integration and admin dashboard.',
-      thumbnail: null,
-      tags: ['E-Commerce', 'Full-Stack', 'Payment'],
-      category: 'Web Application',
-      techStack: ['React', 'Node.js', 'MongoDB'],
-      slug: '/projects/ecommerce-platform',
-    },
-    {
-      id: '2',
-      title: 'Mobile Weather App',
-      description: 'Beautiful weather application with real-time forecasts and location tracking.',
-      thumbnail: null,
-      tags: ['Mobile', 'Weather', 'API'],
-      category: 'Mobile Application',
-      techStack: ['React Native', 'TypeScript'],
-      slug: '/projects/weather-app',
-    },
-    {
-      id: '3',
-      title: 'Portfolio Website',
-      description: 'Modern portfolio website with animations and responsive design.',
-      thumbnail: null,
-      tags: ['Portfolio', 'Design', 'Responsive'],
-      category: 'Web Application',
-      techStack: ['React', 'Tailwind CSS', 'Framer Motion'],
-      slug: '/projects/portfolio',
-    },
-    {
-      id: '4',
-      title: 'Task Management Tool',
-      description: 'Collaborative task management application with real-time updates.',
-      thumbnail: null,
-      tags: ['Productivity', 'Collaboration', 'Real-time'],
-      category: 'Web Application',
-      techStack: ['Vue.js', 'Firebase', 'WebSockets'],
-      slug: '/projects/task-manager',
-    },
-    {
-      id: '5',
-      title: 'AI Image Generator',
-      description: 'AI-powered image generation tool using machine learning models.',
-      thumbnail: null,
-      tags: ['AI', 'Machine Learning', 'Image Processing'],
-      category: 'Web Application',
-      techStack: ['Python', 'TensorFlow', 'React'],
-      slug: '/projects/ai-image-generator',
-    },
-    {
-      id: '6',
-      title: 'Fitness Tracker',
-      description: 'Mobile fitness tracking app with workout plans and progress analytics.',
-      thumbnail: null,
-      tags: ['Mobile', 'Health', 'Analytics'],
-      category: 'Mobile Application',
-      techStack: ['Flutter', 'Firebase', 'Charts'],
-      slug: '/projects/fitness-tracker',
-    },
-  ], [])
+  // Get projects from centralized data
+  const allProjects = getAllProjects()
 
   // Filter projects based on selected filters
   const filteredProjects = useProjectFilters(allProjects, selectedFilters)

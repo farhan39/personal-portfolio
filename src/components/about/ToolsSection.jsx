@@ -64,7 +64,7 @@ const ToolsSection = ({
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: (categoryIndex * 0.1) + (index * 0.05) }}
                     whileHover={{ scale: 1.05, y: -5 }}
-                    className="flex flex-col items-center justify-center p-4 bg-[#FDF7FF] border-2 border-[#EADFF2] rounded-xl hover:border-[#01CDFE] transition-all duration-300 cursor-default group"
+                    className="flex flex-col items-center justify-center p-4 bg-[#FDF7FF] border-2 border-dotted border-[#EADFF2] rounded-xl hover:border-[#01CDFE] transition-all duration-300 cursor-default group"
                   >
                     {/* Tool Icon/Logo */}
                     <div className="w-10 h-10 md:w-12 md:h-12 mb-2 flex items-center justify-center">

@@ -39,7 +39,7 @@ const SkillsGrid = ({
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="flex flex-col items-center justify-center p-4 md:p-6 bg-[#FDF7FF] border-2 border-[#EADFF2] rounded-xl hover:border-[#B967FF] transition-all duration-300 cursor-default group"
+              className="flex flex-col items-center justify-center p-4 md:p-6 bg-[#FDF7FF] border-2 border-dotted border-[#EADFF2] rounded-xl hover:border-[#B967FF] transition-all duration-300 cursor-default group"
             >
               {/* Skill Icon */}
               <div className="w-12 h-12 md:w-16 md:h-16 mb-3 flex items-center justify-center bg-gradient-to-br from-[#FFF0FB] to-[#F2FDFF] rounded-lg group-hover:from-[#FF71CE] group-hover:to-[#B967FF] transition-all duration-300">
