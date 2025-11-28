@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion'
+import SkillsIllustration from '../common/SkillsIllustration'
+import AnimatedBlob from '../common/AnimatedBlob'
 
 /**
  * SkillsPreview Component
@@ -10,21 +12,48 @@ const SkillsPreview = ({ data }) => {
   const { title, items } = data
 
   return (
-    <section className="w-full py-16 md:py-24 lg:py-32 bg-[#FFF0FB]/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="text-center mb-12 md:mb-16 space-y-4"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] font-heading">
-            {title}
-          </h2>
-          <div className="h-1 w-32 mx-auto bg-gradient-to-r from-[#01CDFE] to-[#B967FF] rounded-full"></div>
-        </motion.div>
+    <section className="w-full py-16 md:py-24 lg:py-32 bg-[#FFF0FB]/30 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <AnimatedBlob 
+        size="md" 
+        color="pink" 
+        className="top-20 right-10 opacity-20" 
+        delay={0.5}
+      />
+      <AnimatedBlob 
+        size="sm" 
+        color="cyan" 
+        className="bottom-20 left-10 opacity-15" 
+        delay={1.5}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header with Illustration */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mb-12 md:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="text-center lg:text-left lg:col-span-2 space-y-4"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] font-heading">
+              {title}
+            </h2>
+            <div className="h-1 w-32 lg:w-24 bg-gradient-to-r from-[#01CDFE] to-[#B967FF] rounded-full"></div>
+          </motion.div>
+          
+          {/* Skills Illustration */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="hidden lg:flex items-center justify-center h-48"
+          >
+            <SkillsIllustration />
+          </motion.div>
+        </div>
 
         {/* Skills Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8">
