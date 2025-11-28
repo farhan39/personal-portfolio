@@ -103,9 +103,9 @@ export const portfolioData = {
       title: 'Full-Stack Developer',
       photo: '/assets/profile.jpg',
       bio: [
-        'I\'m a passionate developer with a love for creating beautiful and functional web applications. With expertise in modern JavaScript frameworks and a keen eye for design, I bring ideas to life through code.',
-        'My journey in web development started several years ago, and I\'ve been continuously learning and growing ever since. I enjoy working on challenging projects that push me to expand my skills and knowledge.',
-        'When I\'m not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.',
+        'I\'m a passionate full-stack developer specializing in web, mobile, and AI agentic automations. With expertise spanning modern JavaScript frameworks, Flutter for cross-platform mobile development, and intelligent automation systems, I create comprehensive solutions that bridge the gap between design, functionality, and intelligent automation.',
+        'My work encompasses building responsive web applications with React and Next.js, developing native and cross-platform mobile apps with Flutter, and implementing AI-powered agentic automations that streamline workflows and enhance system intelligence. I enjoy tackling complex challenges that require a blend of frontend finesse, backend architecture, and innovative automation strategies.',
+        'When I\'m not coding, you can find me exploring cutting-edge AI technologies, contributing to open-source projects, or sharing knowledge with the developer community. I\'m always excited to work on projects that push the boundaries of what\'s possible with web, mobile, and AI automation technologies.',
       ],
     },
     skills: [

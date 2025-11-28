@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { HiMenuAlt3, HiX } from 'react-icons/hi'
 import { useLayoutStore } from '../../stores/useLayoutStore'
 import { getNavigationLinks, portfolioData } from '../../data/portfolioData'
 import MobileDrawer from './MobileDrawer'
@@ -81,35 +82,99 @@ const TopNavbar = () => {
             {/* Logo / Name Area */}
             <Link
               to="/"
-              className="flex items-center space-x-2 sm:space-x-3 group focus:outline-none focus:ring-2 focus:ring-[#B967FF] focus:ring-offset-2 rounded-lg px-2 py-1 -ml-2"
+              className="flex items-center space-x-2 sm:space-x-3 group focus:outline-none focus:ring-2 focus:ring-[#B967FF] focus:ring-offset-2 rounded-lg px-3 py-2 -ml-2 relative overflow-visible"
               aria-label="Go to homepage"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center space-x-2 sm:space-x-3"
+                className="flex items-center space-x-2 sm:space-x-3 relative"
               >
-                {/* Logo
-                {logo.icon ? (
-                  <img
-                    src={logo.icon}
-                    alt={logo.text}
-                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
-                  />
-                ) : (
-                  <div 
-                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-md group-hover:shadow-lg transition-shadow"
-                    style={{
-                      background: 'linear-gradient(135deg, #FF71CE 0%, #B967FF 50%, #01CDFE 100%)',
-                      boxShadow: '0 4px 6px -1px rgba(185, 103, 255, 0.35)',
-                    }}
-                  >
-                    {logo.text.charAt(0)}
-                  </div>
-                )} */}
-                <span className="text-lg sm:text-xl md:text-2xl font-bold text-[#1A1A1A] group-hover:opacity-80 transition-opacity font-heading">
+                {/* Decorative gradient orb - left */}
+                <motion.div
+                  className="absolute -left-2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
+                  style={{
+                    background: 'radial-gradient(circle, #B967FF, transparent)',
+                    filter: 'blur(3px)',
+                  }}
+                  animate={{
+                    scale: [1, 1.4, 1],
+                    opacity: [0.5, 0.8, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+                
+                {/* Decorative sparkle - right */}
+                <motion.div
+                  className="absolute -right-2 top-1/2 -translate-y-1/2 w-1.5 h-1.5"
+                  style={{
+                    background: 'linear-gradient(135deg, #FF71CE, #01CDFE)',
+                    clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+                  }}
+                  animate={{
+                    rotate: [0, 180, 360],
+                    scale: [1, 1.3, 1],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: 'linear',
+                  }}
+                />
+
+                {/* Decorative dot - top */}
+                <motion.div
+                  className="absolute left-1/2 -translate-x-1/2 -top-2 w-1 h-1 rounded-full"
+                  style={{
+                    background: '#01CDFE',
+                    boxShadow: '0 0 6px rgba(1, 205, 254, 0.6)',
+                  }}
+                  animate={{
+                    y: [0, -3, 0],
+                    opacity: [0.6, 1, 0.6],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+
+                {/* Logo Image */}
+                <motion.img
+                  src="/assets/browser_tab_logo.png"
+                  alt="Farhan Bukhari Logo"
+                  className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg shadow-md group-hover:shadow-lg transition-shadow relative z-10"
+                  whileHover={{ rotate: [0, -5, 5, -5, 0] }}
+                  transition={{ duration: 0.5 }}
+                />
+
+                {/* Enhanced Logo Text with gradient */}
+                <span 
+                  className="text-lg sm:text-xl md:text-2xl font-bold font-heading relative z-10 tracking-tight"
+                  style={{
+                    background: 'linear-gradient(135deg, #FF71CE 0%, #B967FF 50%, #01CDFE 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    letterSpacing: '-0.02em',
+                  }}
+                >
                   {logo.text}
                 </span>
+
+                {/* Glow effect behind text */}
+                <motion.div
+                  className="absolute inset-0 rounded-lg -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255, 113, 206, 0.1) 0%, rgba(185, 103, 255, 0.1) 100%)',
+                    filter: 'blur(8px)',
+                  }}
+                />
               </motion.div>
             </Link>
 
@@ -162,36 +227,39 @@ const TopNavbar = () => {
             {/* Mobile Hamburger Menu Button */}
             <button
               onClick={handleMobileDrawerToggle}
-              className="md:hidden p-2 rounded-lg text-[#5A5A5A] hover:bg-[#FFF0FB] active:bg-[#FFE0F5] transition-colors focus:outline-none focus:ring-2 focus:ring-[#B967FF] focus:ring-offset-2"
+              className="md:hidden p-2.5 rounded-lg text-[#1A1A1A] hover:bg-[#FFF0FB] active:bg-[#FFE0F5] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#B967FF] focus:ring-offset-2 group"
               aria-label={isMobileDrawerOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileDrawerOpen}
               aria-controls="mobile-drawer"
             >
               <motion.div
-                animate={isMobileDrawerOpen ? 'open' : 'closed'}
-                className="w-6 h-6 relative"
+                className="w-6 h-6 relative flex items-center justify-center"
+                animate={{ rotate: isMobileDrawerOpen ? 180 : 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
               >
-                <motion.span
-                  variants={{
-                    closed: { rotate: 0, y: 0 },
-                    open: { rotate: 45, y: 6 },
-                  }}
-                  className="absolute top-0 left-0 w-full h-0.5 bg-[#1A1A1A] origin-center"
-                />
-                <motion.span
-                  variants={{
-                    closed: { opacity: 1 },
-                    open: { opacity: 0 },
-                  }}
-                  className="absolute top-1/2 left-0 w-full h-0.5 bg-[#1A1A1A] -translate-y-1/2"
-                />
-                <motion.span
-                  variants={{
-                    closed: { rotate: 0, y: 0 },
-                    open: { rotate: -45, y: -6 },
-                  }}
-                  className="absolute bottom-0 left-0 w-full h-0.5 bg-[#1A1A1A] origin-center"
-                />
+                <AnimatePresence mode="wait">
+                  {isMobileDrawerOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                      animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                      exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <HiX className="w-6 h-6 text-[#1A1A1A] group-hover:text-[#B967FF] transition-colors" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="menu"
+                      initial={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                      animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                      exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <HiMenuAlt3 className="w-6 h-6 text-[#1A1A1A] group-hover:text-[#B967FF] transition-colors" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             </button>
           </div>

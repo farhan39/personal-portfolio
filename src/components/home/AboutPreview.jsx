@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import AnimatedBlob from '../common/AnimatedBlob'
+import AnimatedGradientMesh from '../common/AnimatedGradientMesh'
+import ElegantParticles from '../common/ElegantParticles'
+import SparkleEffect from '../common/SparkleEffect'
 
 /**
  * AboutPreview Component
@@ -13,7 +16,10 @@ const AboutPreview = ({ data }) => {
 
   return (
     <section className="w-full py-16 md:py-24 lg:py-32 relative overflow-hidden">
-      {/* Background decorative elements */}
+      {/* Premium background animations */}
+      <AnimatedGradientMesh className="opacity-20" />
+      <ElegantParticles count={12} className="opacity-15" />
+      <SparkleEffect count={8} />
       <AnimatedBlob 
         size="md" 
         color="cyan" 
