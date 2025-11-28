@@ -832,27 +832,21 @@ export const portfolioData = {
     socialLinks: [
       {
         name: 'GitHub',
-        url: 'https://github.com/yourusername',
+        url: 'https://github.com/farhan39',
         icon: 'github', // Will be rendered as SVG
         color: 'from-[#1A1A1A] to-[#2A2A2A]',
       },
       {
         name: 'LinkedIn',
-        url: 'https://linkedin.com/in/yourusername',
+        url: 'https://linkedin.com/in/farhan-bukhari-561a51259',
         icon: 'linkedin',
         color: 'from-[#0077B5] to-[#005885]',
       },
       {
-        name: 'Twitter',
-        url: 'https://twitter.com/yourusername',
-        icon: 'twitter',
-        color: 'from-[#1DA1F2] to-[#0d8bd9]',
-      },
-      {
-        name: 'Email',
-        url: 'mailto:your.email@example.com',
-        icon: 'email',
-        color: 'from-[#FF71CE] to-[#B967FF]',
+        name: 'Instagram',
+        url: 'https://www.instagram.com/farhanbukhari557',
+        icon: 'instagram',
+        color: 'from-[#C13584] to-[#833AB4]',
       },
     ],
     map: {
