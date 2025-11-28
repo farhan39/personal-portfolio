@@ -67,15 +67,17 @@ const ToolsSection = ({
                     className="flex flex-col items-center justify-center p-4 bg-[#FDF7FF] border-2 border-dotted border-[#EADFF2] rounded-xl hover:border-[#01CDFE] transition-all duration-300 cursor-default group"
                   >
                     {/* Tool Icon/Logo */}
-                    <div className="w-10 h-10 md:w-12 md:h-12 mb-2 flex items-center justify-center">
+                    <div className="w-10 h-10 md:w-12 md:h-12 mb-2 flex items-center justify-center p-1">
                       {tool.icon ? (
-                        <span className="text-2xl md:text-3xl">{tool.icon}</span>
-                      ) : tool.logo ? (
-                        <img
-                          src={tool.logo}
-                          alt={tool.name}
-                          className="w-full h-full object-contain"
-                        />
+                        tool.icon.startsWith('/') ? (
+                          <img
+                            src={tool.icon}
+                            alt={tool.name}
+                            className="w-full h-full object-contain"
+                          />
+                        ) : (
+                          <span className="text-2xl md:text-3xl">{tool.icon}</span>
+                        )
                       ) : (
                         <div className="w-8 h-8 bg-[#01CDFE] rounded"></div>
                       )}

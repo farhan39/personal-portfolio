@@ -113,20 +113,32 @@ const ContactForm = ({ className = '' }) => {
     setSubmitStatus(null)
 
     try {
-      // Simulate API call - Replace with actual API endpoint
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      
-      // Here you would make the actual API call
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // })
+      // Create FormData for Web3Forms API
+      const formDataToSubmit = new FormData()
+      formDataToSubmit.append('access_key', 'c8a0030b-66cb-41f9-b82c-3ab8c05a50e2')
+      formDataToSubmit.append('name', formData.name)
+      formDataToSubmit.append('email', formData.email)
+      formDataToSubmit.append('message', formData.message)
+      formDataToSubmit.append('subject', 'New Contact Form Submission from Portfolio')
+      formDataToSubmit.append('from_name', formData.name)
 
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', message: '' })
-      setErrors({})
+      // Submit to Web3Forms API
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSubmit,
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+        setErrors({})
+      } else {
+        setSubmitStatus('error')
+      }
     } catch (error) {
+      console.error('Form submission error:', error)
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)

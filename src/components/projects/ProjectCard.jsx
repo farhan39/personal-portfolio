@@ -22,7 +22,8 @@ const ProjectCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.4 }}
-      className={`group flex flex-col bg-[#FDF7FF] border-2 border-[#EADFF2] rounded-2xl overflow-hidden hover:border-[#B967FF] transition-all duration-300 ${className}`}
+      whileHover={{ y: -8, scale: 1.02 }}
+      className={`group flex flex-col bg-[#FDF7FF] border-2 border-[#EADFF2] rounded-2xl overflow-hidden hover:border-[#B967FF] transition-all duration-300 shadow-md hover:shadow-xl ${className}`}
     >
       <Link
         to={projectPath}
@@ -76,17 +77,28 @@ const ProjectCard = ({
           {tags && tags.length > 0 && (
             <div className="flex flex-wrap gap-2 pt-2">
               {tags.slice(0, 4).map((tag, index) => (
-                <span
+                <motion.span
                   key={index}
-                  className="px-3 py-1 text-xs md:text-sm bg-[#F2FDFF] border border-[#EADFF2] text-[#5A5A5A] rounded-full hover:bg-[#E3C8FF] hover:border-[#B967FF] transition-colors"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="px-3 py-1 text-xs md:text-sm bg-[#F2FDFF] border border-[#EADFF2] text-[#5A5A5A] rounded-full hover:bg-[#E3C8FF] hover:border-[#B967FF] transition-colors cursor-default"
                 >
                   {tag}
-                </span>
+                </motion.span>
               ))}
               {tags.length > 4 && (
-                <span className="px-3 py-1 text-xs md:text-sm bg-[#F2FDFF] border border-[#EADFF2] text-[#5A5A5A] rounded-full">
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.4 }}
+                  className="px-3 py-1 text-xs md:text-sm bg-[#F2FDFF] border border-[#EADFF2] text-[#5A5A5A] rounded-full"
+                >
                   +{tags.length - 4}
-                </span>
+                </motion.span>
               )}
             </div>
           )}

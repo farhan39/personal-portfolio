@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 import HeroSection from '../components/home/HeroSection'
-import AboutPreview from '../components/home/AboutPreview'
 import SkillsPreview from '../components/home/SkillsPreview'
 import FeaturedProjects from '../components/home/FeaturedProjects'
 import ContactCTA from '../components/home/ContactCTA'
@@ -16,11 +15,8 @@ const Home = () => {
 
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <HeroSection data={homeData.hero} />
-
-      {/* About Preview Section */}
-      <AboutPreview data={homeData.about} />
+      {/* Hero Section with integrated About Me content */}
+      <HeroSection data={homeData.hero} aboutData={homeData.about} />
 
       {/* Skills Preview Section */}
       <SkillsPreview data={homeData.skills} />

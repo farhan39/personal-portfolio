@@ -7,6 +7,10 @@ import ProjectDescription from '../components/projects/ProjectDescription'
 import FeatureList from '../components/projects/FeatureList'
 import ProjectNavigation from '../components/projects/ProjectNavigation'
 import { getAllProjects, getProjectById } from '../data/portfolioData'
+import AnimatedGradientMesh from '../components/common/AnimatedGradientMesh'
+import ElegantParticles from '../components/common/ElegantParticles'
+import AnimatedBlob from '../components/common/AnimatedBlob'
+import SparkleEffect from '../components/common/SparkleEffect'
 
 /**
  * ProjectDetails Page
@@ -61,9 +65,27 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div className="w-full min-h-screen">
-      {/* Project Header */}
-      <ProjectHeader
+    <div className="w-full min-h-screen relative overflow-hidden">
+      {/* Background animations */}
+      <AnimatedGradientMesh className="opacity-30" />
+      <ElegantParticles count={20} className="opacity-25" />
+      <AnimatedBlob 
+        size="lg" 
+        color="purple" 
+        className="top-20 right-20 opacity-10" 
+        delay={0}
+      />
+      <AnimatedBlob 
+        size="md" 
+        color="cyan" 
+        className="bottom-20 left-20 opacity-10" 
+        delay={2}
+      />
+      <SparkleEffect count={12} />
+      
+      <div className="relative z-10">
+        {/* Project Header */}
+        <ProjectHeader
         title={project.title}
         subtitle={project.subtitle}
         date={project.date}
@@ -71,41 +93,42 @@ const ProjectDetails = () => {
         techStack={project.techStack}
       />
 
-      {/* Screenshot Gallery */}
-      {project.screenshots && project.screenshots.length > 0 && (
-        <section className="w-full py-8 md:py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ScreenshotGallery
-              images={project.screenshots}
-              viewMode="grid"
-            />
-          </div>
-        </section>
-      )}
+        {/* Screenshot Gallery */}
+        {project.screenshots && project.screenshots.length > 0 && (
+          <section className="w-full py-8 md:py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <ScreenshotGallery
+                images={project.screenshots}
+                viewMode="grid"
+              />
+            </div>
+          </section>
+        )}
 
-      {/* YouTube Video */}
-      {project.videoId && (
-        <section className="w-full py-8 md:py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <YouTubeEmbed
-              videoId={project.videoId}
-              title={`${project.title} - Video Demo`}
-            />
-          </div>
-        </section>
-      )}
+        {/* YouTube Video */}
+        {project.videoId && (
+          <section className="w-full py-8 md:py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <YouTubeEmbed
+                videoId={project.videoId}
+                title={`${project.title} - Video Demo`}
+              />
+            </div>
+          </section>
+        )}
 
-      {/* Project Description */}
-      <ProjectDescription description={project.description} />
+        {/* Project Description */}
+        <ProjectDescription description={project.description} />
 
-      {/* Feature List */}
-      <FeatureList features={project.features} />
+        {/* Feature List */}
+        <FeatureList features={project.features} />
 
-      {/* Project Navigation */}
-      <ProjectNavigation
-        previousProject={previousProject}
-        nextProject={nextProject}
-      />
+        {/* Project Navigation */}
+        <ProjectNavigation
+          previousProject={previousProject}
+          nextProject={nextProject}
+        />
+      </div>
     </div>
   )
 }

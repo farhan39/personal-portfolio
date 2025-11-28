@@ -6,6 +6,7 @@ import MainContent from './MainContent'
 import PageTransition from './PageTransition'
 import { useLayoutStore } from '../../stores/useLayoutStore'
 import { useScrollDetection } from '../../hooks/useScrollDetection'
+import GlobalBackground from '../common/GlobalBackground'
 
 /**
  * Layout Component
@@ -58,7 +59,10 @@ const Layout = ({ children }) => {
   }, [location.pathname, setCurrentPage, setPageTitle, setBreadcrumbs])
 
   return (
-    <div className="min-h-screen bg-[#FDF7FF]">
+    <div className="min-h-screen bg-[#FDF7FF] relative">
+      {/* Global background animation - spans all pages */}
+      <GlobalBackground />
+      
       <TopNavbar />
       <StickyHeader />
       <MainContent>

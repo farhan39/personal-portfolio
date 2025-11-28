@@ -62,18 +62,18 @@ export const portfolioData = {
     skills: {
       title: 'Skills & Technologies',
       items: [
-      { name: 'Flutter', icon: '📱' },
-      { name: 'React', icon: '⚛️' },
-      { name: 'TypeScript', icon: '📘' },
-      { name: 'Node.js', icon: '🟢' },
-      { name: 'Python', icon: '🐍' },
-      { name: 'Tailwind CSS', icon: '🎨' },
-      { name: 'MongoDB', icon: '🍃' },
-      { name: 'PostgreSQL', icon: '🐘' },
-      { name: 'Docker', icon: '🐳' },
-      { name: 'AWS', icon: '☁️' },
-      { name: 'Git', icon: '📦' },
-      { name: 'Next.js', icon: '▲' },
+      { name: 'Flutter', icon: '📱' }, // No icon available, keeping emoji
+      { name: 'React', icon: '/assets/generic_icons/react.svg' },
+      { name: 'TypeScript', icon: '/assets/generic_icons/typescript.svg' },
+      { name: 'Node.js', icon: '/assets/generic_icons/nodejs.svg' },
+      { name: 'Python', icon: '/assets/generic_icons/python.svg' },
+      { name: 'Tailwind CSS', icon: '/assets/generic_icons/tailwindcss.svg' },
+      { name: 'MongoDB', icon: '/assets/generic_icons/mongodb.svg' },
+      { name: 'PostgreSQL', icon: '/assets/generic_icons/postgresql.svg' },
+      { name: 'Docker', icon: '/assets/generic_icons/docker.svg' },
+      { name: 'AWS', icon: '/assets/generic_icons/aws.svg' },
+      { name: 'Git', icon: '/assets/generic_icons/git.svg' },
+      { name: 'Next.js', icon: '/assets/generic_icons/nextjs.svg' },
     ],
     },
     featuredProjects: {
@@ -84,7 +84,7 @@ export const portfolioData = {
       },
       // Projects will be pulled from projects array below
       // Specify IDs of featured projects
-      featuredIds: ['1', '2', '3'],
+      featuredIds: ['8', '11', '12'],
     },
     contactCTA: {
       title: 'Ready to work together?',
@@ -103,70 +103,69 @@ export const portfolioData = {
       title: 'Full-Stack Developer',
       photo: '/assets/profile.jpg',
       bio: [
-        'I\'m a passionate developer with a love for creating beautiful and functional web applications. With expertise in modern JavaScript frameworks and a keen eye for design, I bring ideas to life through code.',
-        'My journey in web development started several years ago, and I\'ve been continuously learning and growing ever since. I enjoy working on challenging projects that push me to expand my skills and knowledge.',
-        'When I\'m not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.',
+        'I\'m a passionate full-stack developer specializing in web, mobile, and AI agentic automations. With expertise spanning modern JavaScript frameworks, Flutter for cross-platform mobile development, and intelligent automation systems, I create comprehensive solutions that bridge the gap between design, functionality, and intelligent automation.',
+        'My work encompasses building responsive web applications with React and Next.js, developing native and cross-platform mobile apps with Flutter, and implementing AI-powered agentic automations that streamline workflows and enhance system intelligence. I enjoy tackling complex challenges that require a blend of frontend finesse, backend architecture, and innovative automation strategies.',
+        'When I\'m not coding, you can find me exploring cutting-edge AI technologies, contributing to open-source projects, or sharing knowledge with the developer community. I\'m always excited to work on projects that push the boundaries of what\'s possible with web, mobile, and AI automation technologies.',
       ],
     },
     skills: [
-      { name: 'React', icon: '⚛️', level: 90 },
-      { name: 'TypeScript', icon: '📘', level: 85 },
-      { name: 'Node.js', icon: '🟢', level: 80 },
-      { name: 'Python', icon: '🐍', level: 75 },
-      { name: 'Tailwind CSS', icon: '🎨', level: 95 },
-      { name: 'MongoDB', icon: '🍃', level: 70 },
-      { name: 'PostgreSQL', icon: '🐘', level: 75 },
-      { name: 'Docker', icon: '🐳', level: 65 },
-      { name: 'AWS', icon: '☁️', level: 60 },
-      { name: 'Git', icon: '📦', level: 85 },
-      { name: 'Figma', icon: '🎨', level: 70 },
-      { name: 'Next.js', icon: '▲', level: 80 },
+      { name: 'React', icon: '/assets/generic_icons/react.svg', level: 90 },
+      { name: 'TypeScript', icon: '/assets/generic_icons/typescript.svg', level: 85 },
+      { name: 'Node.js', icon: '/assets/generic_icons/nodejs.svg', level: 80 },
+      { name: 'Python', icon: '/assets/generic_icons/python.svg', level: 75 },
+      { name: 'Tailwind CSS', icon: '/assets/generic_icons/tailwindcss.svg', level: 95 },
+      { name: 'MongoDB', icon: '/assets/generic_icons/mongodb.svg', level: 70 },
+      { name: 'PostgreSQL', icon: '/assets/generic_icons/postgresql.svg', level: 75 },
+      { name: 'Docker', icon: '/assets/generic_icons/docker.svg', level: 65 },
+      { name: 'AWS', icon: '/assets/generic_icons/aws.svg', level: 60 },
+      { name: 'Git', icon: '/assets/generic_icons/git.svg', level: 85 },
+      { name: 'Next.js', icon: '/assets/generic_icons/nextjs.svg', level: 80 },
     ],
     experience: [
       {
-        period: '2022 - Present',
-        title: 'Senior Full-Stack Developer',
-        company: 'Tech Company Inc.',
-        description: 'Leading development of scalable web applications using React and Node.js. Collaborating with cross-functional teams to deliver high-quality software solutions.',
-        technologies: ['React', 'Node.js', 'TypeScript', 'AWS', 'Docker'],
+        period: 'Jun 2025 - November 2025',
+        title: 'Software Engineer',
+        company: 'EmbiTronics',
+        description: 'Developing full-stack applications for web and mobile platforms using React.js, Node.js, and Flutter. Implement cloud-based services with AWS and design automated workflows while applying problem-solving and software design best practices.',
+        technologies: ['React.js', 'Node.js', 'AWS', 'Flutter', 'Django', 'Automation', 'Algorithms', 'Software Design']
       },
       {
-        period: '2020 - 2022',
-        title: 'Full-Stack Developer',
-        company: 'Startup Solutions',
-        description: 'Developed and maintained multiple client projects, focusing on responsive design and user experience. Implemented RESTful APIs and database solutions.',
-        technologies: ['Vue.js', 'Express', 'MongoDB', 'PostgreSQL'],
+        period: 'Apr 2024 - May 2025',
+        title: 'Flutter Developer',
+        company: 'Ten Pixel Studio',
+        description: 'Building modern, scalable, and responsive mobile and web applications using Flutter with Firebase integration, focusing on clean architecture, efficient API development, and seamless user experiences.',
+        technologies: ['Flutter', 'Firebase', 'Cloud Firestore', 'Architectural Design', 'API Development']
       },
       {
-        period: '2018 - 2020',
-        title: 'Frontend Developer',
-        company: 'Digital Agency',
-        description: 'Created interactive web interfaces and collaborated with designers to implement pixel-perfect designs. Optimized applications for performance and accessibility.',
-        technologies: ['React', 'JavaScript', 'CSS', 'HTML'],
+        period: 'Feb 2024 - Present',
+        title: 'AI/ML Intern',
+        company: 'NETSOL Technologies Inc.',
+        description: 'Worked on computer vision and generative AI systems, including fine-tuning YOLOv8 for ant detection and improving model accuracy through dataset optimization. Explored image generation and super-resolution models such as Disco Diffusion, RAG pipelines, and TecoGAN while supporting internal AI R&D experimentation and benchmarking.',
+        technologies: ['YOLOv8', 'Computer Vision', 'RAG', 'Disco Diffusion', 'TecoGAN', 'Python']
       },
     ],
     tools: [
       // Development Tools
-      { name: 'VS Code', icon: '💻', category: 'Development Tools' },
-      { name: 'Git', icon: '📦', category: 'Development Tools' },
-      { name: 'Docker', icon: '🐳', category: 'Development Tools' },
-      { name: 'Postman', icon: '📮', category: 'Development Tools' },
-      { name: 'Chrome DevTools', icon: '🔍', category: 'Development Tools' },
-      { name: 'Terminal', icon: '⌨️', category: 'Development Tools' },
+      { name: 'VS Code', icon: '/assets/generic_icons/vscode.svg', category: 'Development Tools' },
+      { name: 'Git', icon: '/assets/generic_icons/git.svg', category: 'Development Tools' },
+      { name: 'Docker', icon: '/assets/generic_icons/docker.svg', category: 'Development Tools' },
+      { name: 'Postman', icon: '/assets/generic_icons/postman.svg', category: 'Development Tools' },
+      { name: 'Chrome DevTools', icon: '/assets/generic_icons/devtools.svg', category: 'Development Tools' },
+      { name: 'Terminal', icon: '⌨️', category: 'Development Tools' }, // No icon available, keeping emoji
       
       // Project Management
-      { name: 'Jira', icon: '📋', category: 'Project Management' },
-      { name: 'Trello', icon: '📌', category: 'Project Management' },
-      { name: 'Notion', icon: '📝', category: 'Project Management' },
+      { name: 'Jira', icon: '/assets/generic_icons/jira.svg', category: 'Project Management' },
+      { name: 'Trello', icon: '/assets/generic_icons/trello.svg', category: 'Project Management' },
+      { name: 'Notion', icon: '/assets/generic_icons/notion.svg', category: 'Project Management' },
       
       // Cloud & DevOps
-      { name: 'AWS', icon: '☁️', category: 'Cloud & DevOps' },
-      { name: 'Vercel', icon: '▲', category: 'Cloud & DevOps' },
-      { name: 'GitHub Actions', icon: '⚙️', category: 'Cloud & DevOps' },
+      { name: 'AWS', icon: '/assets/generic_icons/aws.svg', category: 'Cloud & DevOps' },
+      { name: 'Vercel', icon: '/assets/generic_icons/vercel.svg', category: 'Cloud & DevOps' },
+      { name: 'GitHub Actions', icon: '/assets/generic_icons/githubactions.svg', category: 'Cloud & DevOps' },
     ],
     cv: {
-      url: '/assets/resume.pdf', // Path to CV file
-      fileName: 'resume.pdf',
+      url: '/assets/documents/Farhan_Bukhari.pdf',
+      fileName: 'Farhan_Bukhari.pdf',
     },
   },
 
@@ -833,27 +832,21 @@ export const portfolioData = {
     socialLinks: [
       {
         name: 'GitHub',
-        url: 'https://github.com/yourusername',
+        url: 'https://github.com/farhan39',
         icon: 'github', // Will be rendered as SVG
         color: 'from-[#1A1A1A] to-[#2A2A2A]',
       },
       {
         name: 'LinkedIn',
-        url: 'https://linkedin.com/in/yourusername',
+        url: 'https://linkedin.com/in/farhan-bukhari-561a51259',
         icon: 'linkedin',
         color: 'from-[#0077B5] to-[#005885]',
       },
       {
-        name: 'Twitter',
-        url: 'https://twitter.com/yourusername',
-        icon: 'twitter',
-        color: 'from-[#1DA1F2] to-[#0d8bd9]',
-      },
-      {
-        name: 'Email',
-        url: 'mailto:your.email@example.com',
-        icon: 'email',
-        color: 'from-[#FF71CE] to-[#B967FF]',
+        name: 'Instagram',
+        url: 'https://www.instagram.com/farhanbukhari557',
+        icon: 'instagram',
+        color: 'from-[#C13584] to-[#833AB4]',
       },
     ],
     map: {

@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import ProjectCard from '../projects/ProjectCard'
+import ProjectIllustration from '../common/ProjectIllustration'
+import AnimatedBlob from '../common/AnimatedBlob'
+import AnimatedGradientMesh from '../common/AnimatedGradientMesh'
+import ElegantParticles from '../common/ElegantParticles'
+import SparkleEffect from '../common/SparkleEffect'
+import OrbitingElements from '../common/OrbitingElements'
 
 /**
  * FeaturedProjects Component
@@ -12,21 +18,46 @@ const FeaturedProjects = ({ data, projects = [] }) => {
   const { title, cta } = data
 
   return (
-    <section className="w-full py-16 md:py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="text-center mb-12 md:mb-16 space-y-4"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] font-heading">
-            {title}
-          </h2>
-          <div className="h-1 w-40 mx-auto bg-gradient-to-r from-[#FF71CE] to-[#01CDFE] rounded-full"></div>
-        </motion.div>
+    <section className="w-full py-16 md:py-24 lg:py-32 relative overflow-hidden">
+      {/* Premium background animations */}
+      <AnimatedGradientMesh className="opacity-25" />
+      <OrbitingElements className="opacity-10" />
+      <ElegantParticles count={20} className="opacity-20" />
+      <AnimatedBlob 
+        size="lg" 
+        color="purple" 
+        className="top-0 right-0 opacity-15" 
+        delay={0}
+      />
+      <SparkleEffect count={12} />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header with Illustration */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mb-12 md:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="text-center lg:text-left lg:col-span-2 space-y-4"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] font-heading">
+              {title}
+            </h2>
+            <div className="h-1 w-40 lg:w-32 bg-gradient-to-r from-[#FF71CE] to-[#01CDFE] rounded-full"></div>
+          </motion.div>
+          
+          {/* Project Illustration */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="hidden lg:flex items-center justify-center h-48"
+          >
+            <ProjectIllustration />
+          </motion.div>
+        </div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
