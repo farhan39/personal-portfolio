@@ -42,9 +42,17 @@ const SkillsGrid = ({
               className="flex flex-col items-center justify-center p-4 md:p-6 bg-[#FDF7FF] border-2 border-dotted border-[#EADFF2] rounded-xl hover:border-[#B967FF] transition-all duration-300 cursor-default group"
             >
               {/* Skill Icon */}
-              <div className="w-12 h-12 md:w-16 md:h-16 mb-3 flex items-center justify-center bg-gradient-to-br from-[#FFF0FB] to-[#F2FDFF] rounded-lg group-hover:from-[#FF71CE] group-hover:to-[#B967FF] transition-all duration-300">
+              <div className="w-12 h-12 md:w-16 md:h-16 mb-3 flex items-center justify-center bg-gradient-to-br from-[#FFF0FB] to-[#F2FDFF] rounded-lg group-hover:from-[#FF71CE] group-hover:to-[#B967FF] transition-all duration-300 p-2">
                 {skill.icon ? (
-                  <span className="text-2xl md:text-3xl">{skill.icon}</span>
+                  skill.icon.startsWith('/') ? (
+                    <img
+                      src={skill.icon}
+                      alt={skill.name}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <span className="text-2xl md:text-3xl">{skill.icon}</span>
+                  )
                 ) : (
                   <div className="w-8 h-8 bg-[#B967FF] rounded"></div>
                 )}

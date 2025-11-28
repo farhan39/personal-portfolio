@@ -39,11 +39,19 @@ const SkillsPreview = ({ data }) => {
               className="aspect-square flex flex-col items-center justify-center space-y-3 p-4 bg-[#FDF7FF] border-2 border-[#EADFF2] rounded-xl hover:border-[#B967FF] transition-all duration-300 cursor-default"
             >
               {/* Skill Icon */}
-              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center text-3xl md:text-4xl">
-                {skill.icon}
+              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+                {skill.icon && skill.icon.startsWith('/') ? (
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-full h-full object-contain"
+                  />
+                ) : (
+                  <span className="text-3xl md:text-4xl">{skill.icon}</span>
+                )}
               </div>
               {/* Skill Name */}
-              <span className="text-xs md:text-sm font-medium text-[#1A1A1A] text-center">
+              <span className="text-xs md:text-sm font-large text-[#1A1A1A] text-center">
                 {skill.name}
               </span>
             </motion.div>
