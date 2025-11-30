@@ -50,8 +50,7 @@ export const portfolioData = {
     about: {
       title: 'About Me',
       description: [
-        "I\'m a passionate developer creating beautiful and functional experiences across web and mobile platforms. With expertise in modern JavaScript frameworks and clean UI/UX design, I turn ideas into responsive, high-performance applications.",
-        "I also integrate AI-powered and agentic automations to make systems smarter and more efficient. I enjoy tackling challenging projects that combine design, functionality, and intelligent automation to deliver practical, impactful solutions."
+        "I'm a passionate developer crafting beautiful, high-performance web and mobile applications. I specialize in modern JavaScript frameworks, clean UI/UX design, and AI-powered automations, creating smart, responsive, and impactful solutions that seamlessly blend design, functionality, and intelligence."
       ],
       image: null, // Path to about image: '/assets/about-image.jpg'
       cta: {

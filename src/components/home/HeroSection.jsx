@@ -12,17 +12,12 @@ const HeroSection = ({ data, aboutData }) => {
 
   const { title, subtitle, description, cta, image } = data
   const [showIllustration, setShowIllustration] = useState(true)
-  const [imageLoaded, setImageLoaded] = useState(false)
 
   // Transition from illustration to image after 3.5 seconds
   useEffect(() => {
     if (image) {
       const timer = setTimeout(() => {
         setShowIllustration(false)
-        // After image transition completes (1 second), mark as loaded
-        setTimeout(() => {
-          setImageLoaded(true)
-        }, 1000)
       }, 3500) // Show illustration for 3.5 seconds
 
       return () => clearTimeout(timer)
@@ -30,18 +25,18 @@ const HeroSection = ({ data, aboutData }) => {
   }, [image])
 
   return (
-    <section className="w-full min-h-[80vh] md:min-h-[90vh] flex items-center justify-center relative overflow-hidden">
+    <section className="w-full min-h-[80vh] md:min-h-[90vh] flex items-center justify-center relative overflow-hidden md:pt-0">
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-8 md:py-0">
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 md:gap-6 lg:gap-12">
           {/* Top Row: Image and Content Side by Side */}
-          <div className={`flex ${imageLoaded && !showIllustration ? 'flex-col' : 'flex-row flex-wrap'} md:flex-nowrap lg:contents gap-4 md:gap-6 items-start`}>
+          <div className="flex flex-row flex-wrap md:flex-nowrap lg:contents gap-4 md:gap-6 items-start">
             {/* Hero Content Area - Text Only */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className={`${imageLoaded && !showIllustration ? 'w-full order-2' : 'flex-1 min-w-0'} lg:col-span-7 space-y-3 md:space-y-4 lg:space-y-6`}
+              className="flex-1 min-w-0 lg:col-span-7 space-y-3 md:space-y-4 lg:space-y-6"
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A1A1A] font-heading leading-tight">
                 {title}
@@ -59,7 +54,7 @@ const HeroSection = ({ data, aboutData }) => {
               
               {/* About Me Content */}
               {aboutData && aboutData.description && (
-                <div className="space-y-3 md:space-y-4 pt-2 md:pt-4">
+                <div className="space-y-3 md:space-y-4 pt-4 md:pt-4 pb-6 md:pb-0">
                   {Array.isArray(aboutData.description) ? (
                     aboutData.description.map((para, index) => (
                       <p
@@ -83,7 +78,7 @@ const HeroSection = ({ data, aboutData }) => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className={`flex-shrink-0 lg:col-span-5 flex items-center justify-center relative ${imageLoaded && !showIllustration ? 'w-full order-1 mb-4' : 'w-32 sm:w-40 md:w-48'} lg:w-full lg:max-w-md xl:max-w-md self-start`}
+              className="flex-shrink-0 lg:col-span-5 flex items-center justify-center relative w-32 sm:w-40 md:w-48 lg:w-full lg:max-w-md xl:max-w-md self-start"
             >
               <div className="aspect-square w-full rounded-xl md:rounded-2xl overflow-hidden border-2 border-dotted border-[#EADFF2] shadow-lg relative">
                 <AnimatePresence mode="wait">
@@ -128,7 +123,7 @@ const HeroSection = ({ data, aboutData }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="w-full lg:col-span-7 flex flex-col sm:flex-row gap-3 md:gap-4 pt-2 md:pt-2"
+            className="w-full lg:col-span-7 flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-2"
           >
             {cta?.primary && (
               <Link
