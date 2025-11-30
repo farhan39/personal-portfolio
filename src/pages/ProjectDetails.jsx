@@ -7,9 +7,6 @@ import ProjectDescription from '../components/projects/ProjectDescription'
 import FeatureList from '../components/projects/FeatureList'
 import ProjectNavigation from '../components/projects/ProjectNavigation'
 import { getAllProjects, getProjectById } from '../data/portfolioData'
-import AnimatedGradientMesh from '../components/common/AnimatedGradientMesh'
-import ElegantParticles from '../components/common/ElegantParticles'
-import AnimatedBlob from '../components/common/AnimatedBlob'
 import SparkleEffect from '../components/common/SparkleEffect'
 
 /**
@@ -67,21 +64,7 @@ const ProjectDetails = () => {
   return (
     <div className="w-full min-h-screen relative overflow-hidden">
       {/* Background animations */}
-      <AnimatedGradientMesh className="opacity-30" />
-      <ElegantParticles count={20} className="opacity-25" />
-      <AnimatedBlob 
-        size="lg" 
-        color="purple" 
-        className="top-20 right-20 opacity-10" 
-        delay={0}
-      />
-      <AnimatedBlob 
-        size="md" 
-        color="cyan" 
-        className="bottom-20 left-20 opacity-10" 
-        delay={2}
-      />
-      <SparkleEffect count={12} />
+      <SparkleEffect count={3} />
       
       <div className="relative z-10">
         {/* Project Header */}

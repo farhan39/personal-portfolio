@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import ContactIllustration from '../common/ContactIllustration'
-import AnimatedBlob from '../common/AnimatedBlob'
-import AnimatedGradientMesh from '../common/AnimatedGradientMesh'
-import ElegantParticles from '../common/ElegantParticles'
-import FlowingWaves from '../common/FlowingWaves'
 import SparkleEffect from '../common/SparkleEffect'
 
 /**
@@ -18,23 +14,8 @@ const ContactCTA = ({ data }) => {
 
   return (
     <section className="w-full py-12 md:py-16 lg:py-20 bg-gradient-to-r from-[#FFD0E8] via-[#F8E9FF] to-[#DFF4FF] relative overflow-hidden rounded-3xl">
-      {/* Premium background animations */}
-      <AnimatedGradientMesh className="opacity-25" />
-      <FlowingWaves className="bottom-0 opacity-15" />
-      <ElegantParticles count={18} className="opacity-20" />
-      <SparkleEffect count={12} />
-      <AnimatedBlob 
-        size="lg" 
-        color="purple" 
-        className="top-0 right-0 opacity-10" 
-        delay={0}
-      />
-      <AnimatedBlob 
-        size="md" 
-        color="pink" 
-        className="bottom-0 left-0 opacity-10" 
-        delay={2}
-      />
+      {/* Background animations */}
+      <SparkleEffect count={3} />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">

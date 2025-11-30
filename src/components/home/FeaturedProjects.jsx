@@ -2,11 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import ProjectCard from '../projects/ProjectCard'
 import ProjectIllustration from '../common/ProjectIllustration'
-import AnimatedBlob from '../common/AnimatedBlob'
-import AnimatedGradientMesh from '../common/AnimatedGradientMesh'
-import ElegantParticles from '../common/ElegantParticles'
 import SparkleEffect from '../common/SparkleEffect'
-import OrbitingElements from '../common/OrbitingElements'
 
 /**
  * FeaturedProjects Component
@@ -19,17 +15,8 @@ const FeaturedProjects = ({ data, projects = [] }) => {
 
   return (
     <section className="w-full py-16 md:py-24 lg:py-32 relative overflow-hidden">
-      {/* Premium background animations */}
-      <AnimatedGradientMesh className="opacity-25" />
-      <OrbitingElements className="opacity-10" />
-      <ElegantParticles count={20} className="opacity-20" />
-      <AnimatedBlob 
-        size="lg" 
-        color="purple" 
-        className="top-0 right-0 opacity-15" 
-        delay={0}
-      />
-      <SparkleEffect count={12} />
+      {/* Background animations */}
+      <SparkleEffect count={3} />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with Illustration */}
