@@ -67,14 +67,6 @@ const SkillsIllustration = () => {
                 type: 'spring',
                 stiffness: 200,
               }}
-              animate={{
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: icon.delay,
-              }}
             />
             <motion.circle
               cx={icon.x}
@@ -87,15 +79,6 @@ const SkillsIllustration = () => {
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0, 0.3],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: icon.delay,
-              }}
             />
           </motion.g>
         ))}

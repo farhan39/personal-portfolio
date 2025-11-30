@@ -4,12 +4,7 @@ import ExperienceTimeline from '../components/about/ExperienceTimeline'
 import ToolsSection from '../components/about/ToolsSection'
 import DownloadCVButton from '../components/about/DownloadCVButton'
 import { portfolioData } from '../data/portfolioData'
-import AnimatedBlob from '../components/common/AnimatedBlob'
-import AnimatedGradientMesh from '../components/common/AnimatedGradientMesh'
-import ElegantParticles from '../components/common/ElegantParticles'
 import SparkleEffect from '../components/common/SparkleEffect'
-import OrbitingElements from '../components/common/OrbitingElements'
-import FlowingWaves from '../components/common/FlowingWaves'
 
 /**
  * About Page
@@ -20,24 +15,8 @@ const About = () => {
 
   return (
     <div className="w-full min-h-screen relative overflow-hidden">
-      {/* Premium background animations */}
-      <AnimatedGradientMesh className="opacity-30" />
-      <OrbitingElements className="opacity-15" />
-      <ElegantParticles count={22} className="opacity-25" />
-      <FlowingWaves className="bottom-0 opacity-15" />
-      <AnimatedBlob 
-        size="lg" 
-        color="purple" 
-        className="top-20 -left-40 opacity-10" 
-        delay={0}
-      />
-      <AnimatedBlob 
-        size="md" 
-        color="pink" 
-        className="bottom-20 -right-40 opacity-10" 
-        delay={2}
-      />
-      <SparkleEffect count={8} />
+      {/* Background animations */}
+      <SparkleEffect count={3} />
       {/* Profile Section */}
       <div className="relative z-10">
         <ProfileSection

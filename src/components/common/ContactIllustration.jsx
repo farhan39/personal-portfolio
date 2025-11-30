@@ -61,14 +61,6 @@ const ContactIllustration = () => {
             height="60"
             rx="4"
             fill="url(#envelopeGradient)"
-            animate={{
-              y: [220, 215, 220],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              delay: 2,
-            }}
           />
           <motion.path
             d="M100 220 L150 250 L200 220"
@@ -93,16 +85,6 @@ const ContactIllustration = () => {
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 0.8, opacity: 1 }}
               viewport={{ once: true }}
-              animate={{
-                y: [0, -15, 0],
-                opacity: [0.5, 1, 0.5],
-                scale: [0.8, 1, 0.8],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: heart.delay,
-              }}
             />
           </motion.g>
         ))}

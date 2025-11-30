@@ -4,11 +4,6 @@ import ProjectFilters from '../components/projects/ProjectFilters'
 import ProjectsGrid from '../components/projects/ProjectsGrid'
 import { useProjectFilters } from '../hooks/useProjectFilters'
 import { getAllProjects, portfolioData } from '../data/portfolioData'
-import AnimatedBlob from '../components/common/AnimatedBlob'
-import AnimatedGradientMesh from '../components/common/AnimatedGradientMesh'
-import ElegantParticles from '../components/common/ElegantParticles'
-import AnimatedGrid from '../components/common/AnimatedGrid'
-import OrbitingElements from '../components/common/OrbitingElements'
 import SparkleEffect from '../components/common/SparkleEffect'
 
 /**
@@ -31,24 +26,8 @@ const Projects = () => {
 
   return (
     <div className="w-full min-h-screen relative overflow-hidden">
-      {/* Premium background animations */}
-      <AnimatedGradientMesh className="opacity-30" />
-      <OrbitingElements className="opacity-15" />
-      <ElegantParticles count={20} className="opacity-25" />
-      <AnimatedGrid />
-      <AnimatedBlob 
-        size="lg" 
-        color="purple" 
-        className="top-20 -right-40 opacity-10" 
-        delay={0}
-      />
-      <AnimatedBlob 
-        size="md" 
-        color="cyan" 
-        className="bottom-20 -left-40 opacity-10" 
-        delay={2}
-      />
-      <SparkleEffect count={15} />
+      {/* Background animations */}
+      <SparkleEffect count={3} />
       {/* Page Header */}
       <ProjectsPageHeader
         title="My Projects"

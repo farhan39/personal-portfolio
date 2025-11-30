@@ -1,8 +1,4 @@
-import { motion } from 'framer-motion'
 import SkillsIllustration from '../common/SkillsIllustration'
-import AnimatedBlob from '../common/AnimatedBlob'
-import AnimatedGradientMesh from '../common/AnimatedGradientMesh'
-import ElegantParticles from '../common/ElegantParticles'
 import SparkleEffect from '../common/SparkleEffect'
 
 /**
@@ -16,98 +12,51 @@ const SkillsPreview = ({ data }) => {
 
   return (
     <section className="w-full py-16 md:py-24 lg:py-32 bg-[#FFF0FB]/30 relative overflow-hidden">
-      {/* Premium background animations */}
-      <AnimatedGradientMesh className="opacity-20" />
-      <ElegantParticles count={15} className="opacity-20" />
-      <SparkleEffect count={10} />
-      <AnimatedBlob 
-        size="md" 
-        color="pink" 
-        className="top-20 right-10 opacity-20" 
-        delay={0.5}
-      />
-      <AnimatedBlob 
-        size="sm" 
-        color="cyan" 
-        className="bottom-20 left-10 opacity-15" 
-        delay={1.5}
-      />
+      {/* Background animations */}
+      <SparkleEffect count={3} />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with Illustration */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mb-12 md:mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="text-center lg:text-left lg:col-span-2 space-y-4"
-          >
+          <div className="text-center lg:text-left lg:col-span-2 space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] font-heading">
               {title}
             </h2>
             <div className="h-1 w-32 lg:w-24 bg-gradient-to-r from-[#01CDFE] to-[#B967FF] rounded-full"></div>
-          </motion.div>
+          </div>
           
           {/* Skills Illustration */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden lg:flex items-center justify-center h-48"
-          >
+          <div className="hidden lg:flex items-center justify-center h-48">
             <SkillsIllustration />
-          </motion.div>
+          </div>
         </div>
 
         {/* Skills Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8">
           {items.map((skill, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              whileHover={{ scale: 1.05, y: -5 }}
               className="aspect-square flex flex-col items-center justify-center space-y-3 p-4 bg-[#FDF7FF] border-2 border-[#EADFF2] rounded-xl hover:border-[#B967FF] transition-all duration-300 cursor-default"
             >
               {/* Skill Icon */}
-              <motion.div 
-                className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center"
-                whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
-                transition={{ duration: 0.5 }}
-              >
+              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
                 {skill.icon && skill.icon.startsWith('/') ? (
-                  <motion.img
+                  <img
                     src={skill.icon}
                     alt={skill.name}
                     className="w-full h-full object-contain"
-                    whileHover={{ scale: 1.15 }}
-                    transition={{ duration: 0.2 }}
                   />
                 ) : (
-                  <motion.span 
-                    className="text-3xl md:text-4xl"
-                    animate={{ 
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: index * 0.2,
-                    }}
-                  >
+                  <span className="text-3xl md:text-4xl">
                     {skill.icon}
-                  </motion.span>
+                  </span>
                 )}
-              </motion.div>
+              </div>
               {/* Skill Name */}
               <span className="text-xs md:text-sm font-large text-[#1A1A1A] text-center">
                 {skill.name}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

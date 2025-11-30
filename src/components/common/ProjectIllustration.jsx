@@ -75,16 +75,6 @@ const ProjectIllustration = () => {
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            animate={{
-              y: [0, -15, 0],
-              rotate: [card.rotation, card.rotation + 5, card.rotation],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              delay: card.delay,
-              ease: 'easeInOut',
-            }}
             style={{ transformOrigin: 'center' }}
           >
             <motion.rect
