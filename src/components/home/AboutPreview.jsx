@@ -1,6 +1,8 @@
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SparkleEffect from '../common/SparkleEffect'
+import SmartImage from '../common/SmartImage'
 
 /**
  * AboutPreview Component
@@ -28,7 +30,7 @@ const AboutPreview = ({ data }) => {
               className="order-2 lg:order-1"
             >
               <div className="aspect-[4/3] w-full rounded-2xl overflow-hidden border-2 border-[#EADFF2] shadow-lg">
-                <img
+                <SmartImage
                   src={image}
                   alt={title}
                   className="w-full h-full object-cover"
@@ -100,5 +102,7 @@ const AboutPreview = ({ data }) => {
   )
 }
 
-export default AboutPreview
+AboutPreview.displayName = 'AboutPreview'
+
+export default memo(AboutPreview)
 

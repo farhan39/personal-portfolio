@@ -1,4 +1,6 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
+import SmartImage from '../common/SmartImage'
 
 /**
  * ToolsSection Component
@@ -58,7 +60,7 @@ const ToolsSection = ({
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
                 {categoryTools.map((tool, index) => (
                   <motion.div
-                    key={index}
+                    key={tool.name || index}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -70,7 +72,7 @@ const ToolsSection = ({
                     <div className="w-10 h-10 md:w-12 md:h-12 mb-2 flex items-center justify-center p-1">
                       {tool.icon ? (
                         tool.icon.startsWith('/') ? (
-                          <img
+                          <SmartImage
                             src={tool.icon}
                             alt={tool.name}
                             className="w-full h-full object-contain"
@@ -98,5 +100,7 @@ const ToolsSection = ({
   )
 }
 
-export default ToolsSection
+ToolsSection.displayName = 'ToolsSection'
+
+export default memo(ToolsSection)
 

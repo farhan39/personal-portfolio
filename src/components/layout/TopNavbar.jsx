@@ -12,41 +12,29 @@ import MobileDrawer from './MobileDrawer'
  */
 const TopNavbar = () => {
   const location = useLocation()
-  const { isScrolled, setIsScrolled } = useLayoutStore()
+  const { isScrolled } = useLayoutStore()
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(false)
+
+  // Track viewport size to disable heavy decorations on mobile
+  useEffect(() => {
+    const updateViewport = () => {
+      if (typeof window === 'undefined') return
+      setIsMobileViewport(window.innerWidth < 768)
+    }
+    updateViewport()
+    window.addEventListener('resize', updateViewport)
+    return () => window.removeEventListener('resize', updateViewport)
+  }, [])
 
   // Navigation items from centralized data
   const navItems = getNavigationLinks()
   const logo = portfolioData.navigation.logo
 
-  // Sticky-on-scroll behavior
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY > 20
-      setIsScrolled(scrolled)
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll() // Initial check
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [setIsScrolled])
-
   // Close drawer on route change
   useEffect(() => {
     setIsMobileDrawerOpen(false)
   }, [location.pathname])
-
-  // Prevent body scroll when drawer is open
-  useEffect(() => {
-    if (isMobileDrawerOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-  }, [isMobileDrawerOpen])
 
   const isActive = (path) => {
     if (path === '/') {
@@ -86,63 +74,63 @@ const TopNavbar = () => {
               aria-label="Go to homepage"
             >
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: isMobileViewport ? 1 : 1.05 }}
+                whileTap={{ scale: isMobileViewport ? 1 : 0.95 }}
                 className="flex items-center space-x-2 sm:space-x-3 relative"
               >
-                {/* Decorative gradient orb - left */}
-                <motion.div
-                  className="absolute -left-2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
-                  style={{
-                    background: 'radial-gradient(circle, #B967FF, transparent)',
-                    filter: 'blur(3px)',
-                  }}
-                  animate={{
-                    scale: [1, 1.4, 1],
-                    opacity: [0.5, 0.8, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                />
-                
-                {/* Decorative sparkle - right */}
-                <motion.div
-                  className="absolute -right-2 top-1/2 -translate-y-1/2 w-1.5 h-1.5"
-                  style={{
-                    background: 'linear-gradient(135deg, #FF71CE, #01CDFE)',
-                    clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-                  }}
-                  animate={{
-                    rotate: [0, 180, 360],
-                    scale: [1, 1.3, 1],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: 'linear',
-                  }}
-                />
-
-                {/* Decorative dot - top */}
-                <motion.div
-                  className="absolute left-1/2 -translate-x-1/2 -top-2 w-1 h-1 rounded-full"
-                  style={{
-                    background: '#01CDFE',
-                    boxShadow: '0 0 6px rgba(1, 205, 254, 0.6)',
-                  }}
-                  animate={{
-                    y: [0, -3, 0],
-                    opacity: [0.6, 1, 0.6],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                />
+                {/* Skip decorative perpetual animations on mobile to reduce jank */}
+                {!isMobileViewport && (
+                  <>
+                    <motion.div
+                      className="absolute -left-2 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
+                      style={{
+                        background: 'radial-gradient(circle, #B967FF, transparent)',
+                        filter: 'blur(3px)',
+                      }}
+                      animate={{
+                        scale: [1, 1.4, 1],
+                        opacity: [0.5, 0.8, 0.5],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
+                    />
+                    <motion.div
+                      className="absolute -right-2 top-1/2 -translate-y-1/2 w-1.5 h-1.5"
+                      style={{
+                        background: 'linear-gradient(135deg, #FF71CE, #01CDFE)',
+                        clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+                      }}
+                      animate={{
+                        rotate: [0, 180, 360],
+                        scale: [1, 1.3, 1],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: 'linear',
+                      }}
+                    />
+                    <motion.div
+                      className="absolute left-1/2 -translate-x-1/2 -top-2 w-1 h-1 rounded-full"
+                      style={{
+                        background: '#01CDFE',
+                        boxShadow: '0 0 6px rgba(1, 205, 254, 0.6)',
+                      }}
+                      animate={{
+                        y: [0, -3, 0],
+                        opacity: [0.6, 1, 0.6],
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                      }}
+                    />
+                  </>
+                )}
 
                 {/* Logo Image */}
                 <motion.img

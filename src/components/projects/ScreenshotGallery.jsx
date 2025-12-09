@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, memo } from 'react'
 import { motion } from 'framer-motion'
 import { Gallery, Item } from 'react-photoswipe-gallery'
 import 'photoswipe/dist/photoswipe.css'
+import SmartImage from '../common/SmartImage'
 
 /**
  * ScreenshotGallery Component
@@ -125,7 +126,7 @@ const ScreenshotGallery = ({
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {normalizedImages.map((image, index) => (
                 <Item
-                  key={index}
+                  key={image.src || index}
                   original={image.src}
                   thumbnail={image.thumbnail || image.src}
                   width={getDimensions(image.src).width}
@@ -141,7 +142,7 @@ const ScreenshotGallery = ({
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       className="relative aspect-video overflow-hidden rounded-xl bg-[#FFF0FB] border-2 border-dotted border-[#EADFF2] cursor-pointer group hover:border-[#B967FF] transition-all duration-300 flex items-center justify-center p-2"
                     >
-                      <img
+                    <SmartImage
                         src={image.thumbnail || image.src}
                         alt={`Screenshot ${index + 1}`}
                         className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
@@ -187,7 +188,7 @@ const ScreenshotGallery = ({
           <Gallery>
               {normalizedImages.map((image, index) => (
               <Item
-                key={index}
+                key={image.src || index}
                   original={image.src}
                   thumbnail={image.thumbnail || image.src}
                   width={getDimensions(image.src).width}
@@ -200,7 +201,7 @@ const ScreenshotGallery = ({
                     animate={{ opacity: index === currentIndex ? 1 : 0 }}
                     className={`absolute inset-0 ${index === currentIndex ? 'z-10' : 'z-0'}`}
                   >
-                    <img
+                    <SmartImage
                       src={image.thumbnail || image.src}
                       alt={`Screenshot ${index + 1}`}
                       className="w-full h-full object-contain cursor-pointer"
@@ -278,5 +279,7 @@ const ScreenshotGallery = ({
   )
 }
 
-export default ScreenshotGallery
+ScreenshotGallery.displayName = 'ScreenshotGallery'
+
+export default memo(ScreenshotGallery)
 

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
 /**
@@ -6,6 +7,32 @@ import { motion } from 'framer-motion'
  * Spans the entire page with subtle, non-distracting effects
  */
 const GlobalBackground = () => {
+  const [canAnimate, setCanAnimate] = useState(false)
+
+  // Disable heavy background animations on mobile or when user prefers reduced motion
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => {
+      const isMobile = window.innerWidth < 768
+      setCanAnimate(!media.matches && !isMobile)
+    }
+
+    update()
+    media.addEventListener('change', update)
+    window.addEventListener('resize', update)
+    return () => {
+      media.removeEventListener('change', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
+  if (!canAnimate) {
+    return (
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-[radial-gradient(circle_at_20%_40%,rgba(185,103,255,0.12),transparent_50%),radial-gradient(circle_at_80%_60%,rgba(1,205,254,0.12),transparent_50%)]" />
+    )
+  }
+
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {/* Animated gradient mesh */}
@@ -44,7 +71,7 @@ const GlobalBackground = () => {
       </svg>
 
       {/* Flowing lines */}
-      {[...Array(3)].map((_, i) => (
+      {[...Array(2)].map((_, i) => (
         <motion.div
           key={`line-${i}`}
           className="absolute"
@@ -69,7 +96,7 @@ const GlobalBackground = () => {
       ))}
 
       {/* Floating orbs */}
-      {[...Array(4)].map((_, i) => (
+      {[...Array(3)].map((_, i) => (
         <motion.div
           key={`orb-${i}`}
           className="absolute rounded-full blur-3xl"
@@ -102,7 +129,7 @@ const GlobalBackground = () => {
       ))}
 
       {/* Subtle particle field */}
-      {[...Array(20)].map((_, i) => (
+      {[...Array(12)].map((_, i) => (
         <motion.div
           key={`particle-${i}`}
           className="absolute rounded-full"

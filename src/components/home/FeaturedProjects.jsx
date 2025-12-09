@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import ProjectCard from '../projects/ProjectCard'
 import ProjectIllustration from '../common/ProjectIllustration'
 import SparkleEffect from '../common/SparkleEffect'
@@ -12,6 +12,7 @@ const FeaturedProjects = ({ data, projects = [] }) => {
   if (!data || !projects || projects.length === 0) return null
 
   const { title, cta } = data
+  const shouldReduceMotion = useReducedMotion()
 
   return (
     <section className="w-full py-16 md:py-24 lg:py-32 relative overflow-hidden">
@@ -20,7 +21,13 @@ const FeaturedProjects = ({ data, projects = [] }) => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header with Illustration */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mb-12 md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-10% 0px' }}
+          transition={{ duration: 0.4 }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mb-12 md:mb-16"
+        >
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -39,27 +46,61 @@ const FeaturedProjects = ({ data, projects = [] }) => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
             className="hidden lg:flex items-center justify-center h-48"
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : { y: [0, -10, 0] }
+            }
+            transition={{
+              duration: 0.6,
+              delay: 0.2,
+              scale: { duration: 0.6 },
+              y: shouldReduceMotion
+                ? undefined
+                : { duration: 8, repeat: Infinity, ease: 'easeInOut' },
+            }}
           >
             <ProjectIllustration />
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-10% 0px' }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+            },
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10"
+        >
           {projects.map((project) => (
-            <ProjectCard
+            <motion.div
               key={project.id}
-              id={project.id}
-              title={project.title}
-              description={project.shortDescription || project.description}
-              thumbnail={project.thumbnail}
-              tags={project.tags}
-              slug={project.slug}
-            />
+              variants={{
+                hidden: { opacity: 0, y: 24, scale: 0.98 },
+                visible: { opacity: 1, y: 0, scale: 1 },
+              }}
+              whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.02 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 250, damping: 22 }}
+            >
+              <ProjectCard
+                id={project.id}
+                title={project.title}
+                description={project.shortDescription || project.description}
+                thumbnail={project.thumbnail}
+                tags={project.tags}
+                slug={project.slug}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View All Projects CTA */}
         {cta && (

@@ -71,23 +71,6 @@ const MobileDrawer = ({ isOpen, onClose, navItems }) => {
     },
   }
 
-  const itemVariants = {
-    closed: {
-      opacity: 0,
-      x: 20,
-    },
-    open: (i) => ({
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: i * 0.1,
-        type: 'spring',
-        stiffness: 300,
-        damping: 25,
-      },
-    }),
-  }
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -110,9 +93,6 @@ const MobileDrawer = ({ isOpen, onClose, navItems }) => {
             exit="closed"
             variants={drawerVariants}
             className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-[#FDF7FF] shadow-2xl z-50 md:hidden"
-            style={{
-              boxShadow: '0 10px 15px -3px rgba(185, 103, 255, 0.25)',
-            }}
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
@@ -144,13 +124,7 @@ const MobileDrawer = ({ isOpen, onClose, navItems }) => {
               <nav className="flex-1 overflow-y-auto p-6" aria-label="Main navigation">
                 <ul className="space-y-2">
                   {navItems.map((item, index) => (
-                    <motion.li
-                      key={item.path}
-                      custom={index}
-                      initial="closed"
-                      animate="open"
-                      variants={itemVariants}
-                    >
+                    <li key={item.path}>
                       <Link
                         to={item.path}
                         onClick={onClose}
@@ -171,7 +145,7 @@ const MobileDrawer = ({ isOpen, onClose, navItems }) => {
                       >
                         {item.label}
                       </Link>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </nav>

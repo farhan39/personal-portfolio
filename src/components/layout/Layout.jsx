@@ -4,6 +4,7 @@ import TopNavbar from './TopNavbar'
 import StickyHeader from './StickyHeader'
 import MainContent from './MainContent'
 import PageTransition from './PageTransition'
+import ScrollProgressBar from './ScrollProgressBar'
 import { useLayoutStore } from '../../stores/useLayoutStore'
 import { useScrollDetection } from '../../hooks/useScrollDetection'
 import GlobalBackground from '../common/GlobalBackground'
@@ -60,6 +61,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-[#FDF7FF] relative">
+      <ScrollProgressBar />
       {/* Global background animation - spans all pages */}
       <GlobalBackground />
       

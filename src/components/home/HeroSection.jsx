@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { useState, useEffect, memo } from 'react'
 import HeroIllustration from '../common/HeroIllustration'
+import MagneticButton from '../common/MagneticButton'
 
 /**
  * HeroSection Component
@@ -12,6 +13,7 @@ const HeroSection = ({ data, aboutData }) => {
 
   const { title, subtitle, description, cta, image } = data
   const [showIllustration, setShowIllustration] = useState(true)
+  const shouldReduceMotion = useReducedMotion()
 
   // Transition from illustration to image after 3.5 seconds
   useEffect(() => {
@@ -76,8 +78,19 @@ const HeroSection = ({ data, aboutData }) => {
             {/* Hero Visual Area */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              animate={
+                shouldReduceMotion
+                  ? { opacity: 1, scale: 1 }
+                  : { opacity: 1, scale: 1, y: [0, -6, 0] }
+              }
+              transition={{
+                duration: 0.5,
+                delay: 0.2,
+                ease: 'easeOut',
+                y: shouldReduceMotion
+                  ? undefined
+                  : { duration: 6, repeat: Infinity, ease: 'easeInOut' },
+              }}
               className="flex-shrink-0 lg:col-span-5 flex items-center justify-center relative w-32 sm:w-40 md:w-48 lg:w-full lg:max-w-md xl:max-w-md self-start"
             >
               <div className="aspect-square w-full rounded-xl md:rounded-2xl overflow-hidden border-2 border-dotted border-[#EADFF2] shadow-lg relative">
@@ -98,6 +111,9 @@ const HeroSection = ({ data, aboutData }) => {
                       key="hero-image"
                       src={image}
                       alt={title}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
                       initial={{ opacity: 0, scale: 1.1 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 1, ease: 'easeInOut' }}
@@ -126,20 +142,24 @@ const HeroSection = ({ data, aboutData }) => {
             className="w-full lg:col-span-7 flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-2"
           >
             {cta?.primary && (
-              <Link
-                to={cta.primary.link}
-                className="inline-flex items-center justify-center px-5 md:px-6 lg:px-8 py-2.5 md:py-3 lg:py-4 bg-gradient-to-r from-[#FF71CE] to-[#B967FF] text-white text-sm md:text-base lg:text-lg font-semibold rounded-lg hover:from-[#E85DB8] hover:to-[#8F3FD1] transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#B967FF] focus:ring-offset-2"
-              >
-                {cta.primary.text}
-              </Link>
+              <MagneticButton>
+                <Link
+                  to={cta.primary.link}
+                  className="inline-flex items-center justify-center px-5 md:px-6 lg:px-8 py-2.5 md:py-3 lg:py-4 bg-gradient-to-r from-[#FF71CE] to-[#B967FF] text-white text-sm md:text-base lg:text-lg font-semibold rounded-lg hover:from-[#E85DB8] hover:to-[#8F3FD1] transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#B967FF] focus:ring-offset-2"
+                >
+                  {cta.primary.text}
+                </Link>
+              </MagneticButton>
             )}
             {cta?.secondary && (
-              <Link
-                to={cta.secondary.link}
-                className="inline-flex items-center justify-center px-5 md:px-6 lg:px-8 py-2.5 md:py-3 lg:py-4 bg-[#F2FDFF] border-2 border-[#01CDFE] text-[#1A1A1A] text-sm md:text-base lg:text-lg font-semibold rounded-lg hover:bg-[#01CDFE] hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#B967FF] focus:ring-offset-2"
-              >
-                {cta.secondary.text}
-              </Link>
+              <MagneticButton>
+                <Link
+                  to={cta.secondary.link}
+                  className="inline-flex items-center justify-center px-5 md:px-6 lg:px-8 py-2.5 md:py-3 lg:py-4 bg-[#F2FDFF] border-2 border-[#01CDFE] text-[#1A1A1A] text-sm md:text-base lg:text-lg font-semibold rounded-lg hover:bg-[#01CDFE] hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#B967FF] focus:ring-offset-2"
+                >
+                  {cta.secondary.text}
+                </Link>
+              </MagneticButton>
             )}
           </motion.div>
         </div>
@@ -148,5 +168,7 @@ const HeroSection = ({ data, aboutData }) => {
   )
 }
 
-export default HeroSection
+HeroSection.displayName = 'HeroSection'
+
+export default memo(HeroSection)
 

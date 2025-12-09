@@ -1,4 +1,6 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
+import SmartImage from '../common/SmartImage'
 
 /**
  * SkillsGrid Component
@@ -33,7 +35,7 @@ const SkillsGrid = ({
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
           {skills.map((skill, index) => (
             <motion.div
-              key={index}
+              key={skill.name || index}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -45,7 +47,7 @@ const SkillsGrid = ({
               <div className="w-12 h-12 md:w-16 md:h-16 mb-3 flex items-center justify-center bg-gradient-to-br from-[#FFF0FB] to-[#F2FDFF] rounded-lg group-hover:from-[#FF71CE] group-hover:to-[#B967FF] transition-all duration-300 p-2">
                 {skill.icon ? (
                   skill.icon.startsWith('/') ? (
-                    <img
+                    <SmartImage
                       src={skill.icon}
                       alt={skill.name}
                       className="w-full h-full object-contain"
@@ -85,5 +87,7 @@ const SkillsGrid = ({
   )
 }
 
-export default SkillsGrid
+SkillsGrid.displayName = 'SkillsGrid'
+
+export default memo(SkillsGrid)
 

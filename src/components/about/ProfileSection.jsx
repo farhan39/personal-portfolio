@@ -1,4 +1,6 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
+import SmartImage from '../common/SmartImage'
 
 /**
  * ProfileSection Component
@@ -31,7 +33,7 @@ const ProfileSection = ({
             >
               <div className="w-48 h-48 md:w-72 md:h-72 rounded-2xl overflow-hidden border-4 border-[#EADFF2] shadow-lg bg-gradient-to-br from-[#FFF0FB] to-[#F2FDFF]">
                 {photo ? (
-                  <img
+                  <SmartImage
                     src={photo}
                     alt={name || 'Profile'}
                     className="w-full h-full object-cover"
@@ -102,5 +104,7 @@ const ProfileSection = ({
   )
 }
 
-export default ProfileSection
+ProfileSection.displayName = 'ProfileSection'
+
+export default memo(ProfileSection)
 
