@@ -122,21 +122,26 @@ export const portfolioData = {
     ],
     experience: [
       {
-        period: 'Jun 2025 - November 2025',
+        period: 'Feb 2026 - Present',
+        title: 'Full Stack Engineer',
+        company: 'Tron AI',
+      },
+      {
+        period: 'Jan 2025 - Feb 2026',
         title: 'Software Engineer',
         company: 'EmbiTronics',
         description: 'Developing full-stack applications for web and mobile platforms using React.js, Node.js, and Flutter. Implement cloud-based services with AWS and design automated workflows while applying problem-solving and software design best practices.',
         technologies: ['React.js', 'Node.js', 'AWS', 'Flutter', 'Django', 'Automation', 'Algorithms', 'Software Design']
       },
       {
-        period: 'Apr 2024 - May 2025',
+        period: 'Oct 2023 - Dec 2024',
         title: 'Flutter Developer',
         company: 'Ten Pixel Studio',
         description: 'Building modern, scalable, and responsive mobile and web applications using Flutter with Firebase integration, focusing on clean architecture, efficient API development, and seamless user experiences.',
         technologies: ['Flutter', 'Firebase', 'Cloud Firestore', 'Architectural Design', 'API Development']
       },
       {
-        period: 'Feb 2024 - Present',
+        period: 'Feb 2024 - Mar 2024',
         title: 'AI/ML Intern',
         company: 'NETSOL Technologies Inc.',
         description: 'Worked on computer vision and generative AI systems, including fine-tuning YOLOv8 for ant detection and improving model accuracy through dataset optimization. Explored image generation and super-resolution models such as Disco Diffusion, RAG pipelines, and TecoGAN while supporting internal AI R&D experimentation and benchmarking.',
