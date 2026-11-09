@@ -68,10 +68,12 @@ const ProjectCard = ({
             {title}
           </h3>
 
-          {/* Description */}
-          <p className="text-[#5A5A5A] text-sm md:text-base line-clamp-3 flex-1">
-            {description}
-          </p>
+          {/* Description: the wrapper takes the spare height so the clamped <p> stays exactly 3 lines */}
+          <div className="flex-1">
+            <p className="text-[#5A5A5A] text-sm md:text-base line-clamp-3">
+              {description}
+            </p>
+          </div>
 
           {/* Tags / Tech Stack */}
           {tags && tags.length > 0 && (
