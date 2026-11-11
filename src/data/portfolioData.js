@@ -125,6 +125,8 @@ export const portfolioData = {
         period: 'Feb 2026 - Present',
         title: 'Full Stack Engineer',
         company: 'Tron AI',
+        description: 'Building full-stack platforms with React.js/Next.js and Node.js/FastAPI powering client automation and AI voice agent products. Designing n8n workflow automations integrating CRMs, calendars, and third-party APIs, and building voice AI agents with Retell/Twilio for call handling, transcription, and structured data capture.',
+        technologies: ['React.js', 'Next.js', 'Node.js', 'FastAPI', 'n8n', 'Retell', 'Twilio', 'Voice AI', 'Automation']
       },
       {
         period: 'Jan 2025 - Feb 2026',
